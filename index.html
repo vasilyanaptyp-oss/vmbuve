@@ -45,8 +45,8 @@
     "email": "vmbuve@inbox.lv",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Meža iela 23C",
       "addressLocality": "Salacgrīva",
-      "addressRegion": "Limbažu novads",
       "addressCountry": "LV"
     },
     "areaServed": ["Salacgrīva", "Vidzeme", "Latgale", "Zemgale"],
@@ -79,17 +79,18 @@
 
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="V &amp; M Būve, uz lapas sākumu">
+      <a class="brand" href="index.html" aria-label="V &amp; M Būve, uz sākumu">
         <span class="brand-vm" aria-hidden="true">V<span class="brand-amp">&amp;</span>M</span>
         <span class="brand-buve" aria-hidden="true">Būve</span>
       </a>
 
       <nav class="nav" id="nav" aria-label="Galvenā navigācija">
         <ul>
-          <li><a href="#pakalpojumi">Pakalpojumi</a></li>
-          <li><a href="#darbi">Mūsu darbi</a></li>
-          <li><a href="#kapec-mes">Kāpēc mēs</a></li>
-          <li><a href="#kontakti">Kontakti</a></li>
+          <li><a href="index.html" aria-current="page">Sākums</a></li>
+          <li><a href="pakalpojumi.html">Pakalpojumi</a></li>
+          <li><a href="darbi.html">Mūsu darbi</a></li>
+          <li><a href="par-mums.html">Par mums</a></li>
+          <li><a href="kontakti.html">Kontakti</a></li>
         </ul>
         <div class="nav-contacts">
           <a class="btn btn-primary btn-tel" href="tel:+37129480874">
@@ -134,7 +135,7 @@
           <a class="btn btn-primary btn-tel" href="tel:+37129480874">
             <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Zvanīt 29 480 874
           </a>
-          <a class="btn btn-ghost" href="#pieteikums">
+          <a class="btn btn-ghost" href="kontakti.html#pieteikums">
             <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Rakstīt mums
           </a>
         </div>
@@ -146,13 +147,13 @@
       </div>
     </section>
 
-    <section class="section services" id="pakalpojumi" aria-labelledby="pakalpojumi-title">
+    <section class="section services" aria-labelledby="pakalpojumi-title">
       <div class="container services-grid">
         <div class="services-head">
           <p class="eyebrow">Pakalpojumi</p>
           <h2 id="pakalpojumi-title">Visi būvdarbi vienās rokās</h2>
           <p class="section-lead">Uzņemamies gan visu objektu, gan atsevišķus darbus privātmājās un komerciālos objektos.</p>
-          <a class="link-arrow" href="#pieteikums">Pastāstīt par savu objektu <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="link-arrow" href="pakalpojumi.html">Visi pakalpojumi <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         </div>
 
         <ol class="service-list">
@@ -160,53 +161,65 @@
             <span class="service-num" aria-hidden="true">01</span>
             <h3>Pilna cikla būvniecība</h3>
             <p>Privātmāju un komerciālo objektu būvniecība no sākuma līdz galam.</p>
-            <a class="service-photo" href="#darbi"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>Skatīt mūsu darbus</a>
           </li>
           <li class="service">
             <span class="service-num" aria-hidden="true">02</span>
             <h3>Renovācija un siltināšana</h3>
             <p>Privātmāju atjaunošana: fasādes siltināšana un sagatavošana jaunai apdarei.</p>
-            <button class="service-photo" type="button" data-images="privatmajas-renovacija" hidden><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>Skatīt foto<span class="sr-only">: Renovācija un siltināšana</span></button>
           </li>
           <li class="service">
             <span class="service-num" aria-hidden="true">03</span>
             <h3>Fasāžu apdare</h3>
             <p>Fasāžu apdare, arī ar termokoka apdares dēļiem.</p>
-            <button class="service-photo" type="button" data-images="fasade-apdare-ar-termokoka-apdares-deliem" hidden><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>Skatīt foto<span class="sr-only">: Fasāžu apdare</span></button>
           </li>
           <li class="service">
             <span class="service-num" aria-hidden="true">04</span>
             <h3>Jumtu atjaunošana</h3>
             <p>Jumtu atjaunošanas darbi, arī lielām ēkām.</p>
-            <button class="service-photo" type="button" data-images="jumtu-atjaunosanas-darbi" hidden><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>Skatīt foto<span class="sr-only">: Jumtu atjaunošana</span></button>
           </li>
           <li class="service">
             <span class="service-num" aria-hidden="true">05</span>
             <h3>Lifta šahtas</h3>
             <p>Lifta šahtas būvniecība pie esošas ēkas, ieskaitot fasādes apdari.</p>
-            <button class="service-photo" type="button" data-images="lifta-sahtas-buvnieciba" hidden><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>Skatīt foto<span class="sr-only">: Lifta šahtas</span></button>
           </li>
           <li class="service">
             <span class="service-num" aria-hidden="true">06</span>
             <h3>Lieveņi, kāpnes un margas</h3>
             <p>Lieveņu izbūve ar margām un metāla kāpnes ar platformu.</p>
-            <button class="service-photo" type="button" data-images="lievena-izbuve-ar-margam metala-kapnes-ar-platformu" hidden><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg>Skatīt foto<span class="sr-only">: Lieveņi, kāpnes un margas</span></button>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="section works" id="darbi" aria-labelledby="darbi-title">
+    <section class="section works" aria-labelledby="darbi-title">
       <div class="container">
         <div class="works-head">
           <div>
             <p class="eyebrow">Mūsu darbi</p>
             <h2 id="darbi-title">Objekti, ko esam būvējuši un atjaunojuši</h2>
           </div>
-          <div class="filters" id="filters" role="group" aria-label="Rādīt objektus" hidden></div>
         </div>
-        <ul class="gallery" id="gallery"></ul>
-        <noscript><p class="gallery-note">Lai apskatītu fotogrāfijas, pārlūkā ieslēdziet JavaScript.</p></noscript>
+        <ul class="gallery">
+          <li class="tile">
+            <a class="tile-btn" href="darbi.html">
+              <img src="assets/img/darbi/fasade-apdare-ar-termokoka-apdares-deliem-960.webp" alt="" loading="lazy" decoding="async">
+              <span class="tile-meta"><span class="tile-cat">Privātmājas</span><span class="tile-title">Fasādes apdare ar termokoka apdares dēļiem</span></span>
+            </a>
+          </li>
+          <li class="tile">
+            <a class="tile-btn" href="darbi.html">
+              <img src="assets/img/darbi/lifta-sahtas-buvnieciba-960.webp" alt="" loading="lazy" decoding="async">
+              <span class="tile-meta"><span class="tile-cat">Komerciālie objekti</span><span class="tile-title">Lifta šahtas būvniecība</span></span>
+            </a>
+          </li>
+          <li class="tile">
+            <a class="tile-btn" href="darbi.html">
+              <img src="assets/img/darbi/metala-kapnes-ar-platformu-960.webp" alt="" loading="lazy" decoding="async">
+              <span class="tile-meta"><span class="tile-cat">Komerciālie objekti</span><span class="tile-title">Metāla kāpnes ar platformu</span></span>
+            </a>
+          </li>
+        </ul>
+        <p style="margin-top:2rem"><a class="link-arrow" href="darbi.html">Visi darbi un video <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p>
       </div>
     </section>
 
@@ -245,85 +258,33 @@
             <a class="btn btn-primary btn-tel" href="tel:+37129480874">
               <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Zvanīt Marekam: 29 480 874
             </a>
-            <a class="btn btn-ghost" href="#pieteikums">Aizpildīt pieteikumu</a>
+            <a class="btn btn-ghost" href="kontakti.html#pieteikums">Aizpildīt pieteikumu</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section contact" id="kontakti" aria-labelledby="kontakti-title">
-      <div class="container contact-grid">
-        <div class="contact-info">
-          <p class="eyebrow">Kontakti</p>
-          <h2 id="kontakti-title">Pastāstiet par savu objektu</h2>
-          <p class="section-lead">Zvaniet vai rakstiet. Pārrunāsim, kas jādara, un vienosimies par tālāko.</p>
+    <section class="section contact" aria-labelledby="kontakti-title">
+      <div class="container">
+        <p class="eyebrow">Kontakti</p>
+        <h2 id="kontakti-title">Pastāstiet par savu objektu</h2>
+        <p class="section-lead">Zvaniet vai rakstiet. Pārrunāsim, kas jādara, un vienosimies par tālāko.</p>
 
-          <ul class="contact-list">
-            <li>
-              <a class="contact-row" href="tel:+37129480874">
-                <span class="contact-ico"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-                <span><span class="contact-label">Tālrunis · Mareks</span><span class="contact-value">+371 29 480 874</span></span>
-              </a>
-            </li>
-            <li>
-              <a class="contact-row" href="mailto:vmbuve@inbox.lv">
-                <span class="contact-ico"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
-                <span><span class="contact-label">E-pasts</span><span class="contact-value">vmbuve@inbox.lv</span></span>
-              </a>
-            </li>
-            <li>
-              <div class="contact-row">
-                <span class="contact-ico"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
-                <span><span class="contact-label">Atrašanās vieta</span><span class="contact-value">Salacgrīva, Limbažu novads</span></span>
-              </div>
-            </li>
-          </ul>
-          <p class="contact-company">SIA “V &amp; M BŪVE”</p>
-        </div>
-
-        <form class="enquiry" id="pieteikums" action="mailto:vmbuve@inbox.lv" method="post" enctype="text/plain" aria-labelledby="pieteikums-title">
-          <h3 id="pieteikums-title">Pieteikums</h3>
-          <p class="enquiry-intro">Īsi aprakstiet darbus, un mēs ar jums sazināsimies.</p>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="f-vards">Vārds</label>
-              <input id="f-vards" name="vards" type="text" autocomplete="name" required aria-describedby="f-vards-err">
-              <p class="field-error" id="f-vards-err" aria-live="polite"></p>
-            </div>
-            <div class="field">
-              <label for="f-kontakts">Tālrunis vai e-pasts</label>
-              <input id="f-kontakts" name="kontakts" type="text" autocomplete="tel" required aria-describedby="f-kontakts-err">
-              <p class="field-error" id="f-kontakts-err" aria-live="polite"></p>
-            </div>
-          </div>
-
-          <fieldset class="choice-group">
-            <legend>Objekta veids <span class="optional">(nav obligāti)</span></legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="objekts" value="Privātmāja"><span>Privātmāja</span></label>
-              <label class="choice"><input type="radio" name="objekts" value="Komerciālais objekts"><span>Komerciālais objekts</span></label>
-              <label class="choice"><input type="radio" name="objekts" value="Cits"><span>Cits</span></label>
-            </div>
-          </fieldset>
-
-          <div class="field">
-            <label for="f-vieta">Objekta atrašanās vieta <span class="optional">(nav obligāti)</span></label>
-            <input id="f-vieta" name="vieta" type="text" autocomplete="address-level2" placeholder="Piemēram, Salacgrīva">
-          </div>
-
-          <div class="field">
-            <label for="f-apraksts">Kas jādara?</label>
-            <textarea id="f-apraksts" name="apraksts" rows="5" required aria-describedby="f-apraksts-err" placeholder="Piemēram: privātmājas fasādes siltināšana un apdare"></textarea>
-            <p class="field-error" id="f-apraksts-err" aria-live="polite"></p>
-          </div>
-
-          <button class="btn btn-dark enquiry-submit" type="submit">
-            Nosūtīt pieteikumu <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-          </button>
-          <p class="form-note">Poga atvērs jūsu e-pasta programmu ar sagatavotu vēstuli uz vmbuve@inbox.lv. Ja ērtāk, zvaniet: <a href="tel:+37129480874">29 480 874</a>.</p>
-          <p class="form-status" id="form-status" role="status" hidden></p>
-        </form>
+        <ul class="contact-list" style="max-width:34rem">
+          <li>
+            <a class="contact-row" href="tel:+37129480874">
+              <span class="contact-ico"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+              <span><span class="contact-label">Tālrunis · Mareks</span><span class="contact-value">+371 29 480 874</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-row" href="mailto:vmbuve@inbox.lv">
+              <span class="contact-ico"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+              <span><span class="contact-label">E-pasts</span><span class="contact-value">vmbuve@inbox.lv</span></span>
+            </a>
+          </li>
+        </ul>
+        <p style="margin-top:2rem"><a class="link-arrow" href="kontakti.html">Visi kontakti un pieteikuma forma <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p>
       </div>
     </section>
 
@@ -332,7 +293,7 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="#top" aria-label="V &amp; M Būve, uz lapas sākumu">
+        <a class="brand" href="index.html" aria-label="V &amp; M Būve, uz sākumu">
           <span class="brand-vm" aria-hidden="true">V<span class="brand-amp">&amp;</span>M</span>
           <span class="brand-buve" aria-hidden="true">Būve</span>
         </a>
@@ -341,10 +302,11 @@
       <nav aria-label="Lapas sadaļas">
         <p class="footer-title">Sadaļas</p>
         <ul class="footer-links">
-          <li><a href="#pakalpojumi">Pakalpojumi</a></li>
-          <li><a href="#darbi">Mūsu darbi</a></li>
-          <li><a href="#kapec-mes">Kāpēc mēs</a></li>
-          <li><a href="#kontakti">Kontakti</a></li>
+          <li><a href="index.html">Sākums</a></li>
+          <li><a href="pakalpojumi.html">Pakalpojumi</a></li>
+          <li><a href="darbi.html">Mūsu darbi</a></li>
+          <li><a href="par-mums.html">Par mums</a></li>
+          <li><a href="kontakti.html">Kontakti</a></li>
         </ul>
       </nav>
       <div>
@@ -352,7 +314,7 @@
         <ul class="footer-links">
           <li><a href="tel:+37129480874">+371 29 480 874</a></li>
           <li><a href="mailto:vmbuve@inbox.lv">vmbuve@inbox.lv</a></li>
-          <li>Salacgrīva, Limbažu novads</li>
+          <li>Meža iela 23C, Salacgrīva</li>
         </ul>
       </div>
     </div>
@@ -366,35 +328,9 @@
     <a class="btn btn-primary btn-tel" href="tel:+37129480874">
       <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Zvanīt
     </a>
-    <a class="btn btn-ghost" href="#pieteikums">
+    <a class="btn btn-ghost" href="kontakti.html#pieteikums">
       <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Rakstīt
     </a>
   </div>
-
-  <dialog class="lightbox" id="lightbox" aria-labelledby="lb-title">
-    <div class="lb">
-      <div class="lb-top">
-        <span class="lb-count" id="lb-count"></span>
-        <button class="lb-btn lb-close" type="button" aria-label="Aizvērt">
-          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
-        </button>
-      </div>
-      <div class="lb-stage" id="lb-stage"></div>
-      <div class="lb-bottom">
-        <div class="lb-caption">
-          <p class="lb-cat" id="lb-cat"></p>
-          <p class="lb-title" id="lb-title"></p>
-        </div>
-        <div class="lb-nav">
-          <button class="lb-btn lb-prev" type="button" aria-label="Iepriekšējais foto">
-            <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>
-          </button>
-          <button class="lb-btn lb-next" type="button" aria-label="Nākamais foto">
-            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </dialog>
 </body>
 </html>

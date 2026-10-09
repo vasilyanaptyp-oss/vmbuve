@@ -173,6 +173,8 @@
     });
   }
 
+  var needsDarbiData = !!gallery || $$('[data-images]').length > 0;
+
   if (gallery) {
     gallery.addEventListener('click', function (e) {
       var btn = e.target.closest('.tile-btn');
@@ -180,7 +182,9 @@
       var list = visibleIndexes();
       openLightbox(list, list.indexOf(Number(btn.dataset.index)), btn);
     });
+  }
 
+  if (needsDarbiData) {
     fetch(DATA_URL, { cache: 'no-cache' })
       .then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -190,13 +194,14 @@
         items = (Array.isArray(data) ? data : []).filter(function (d) {
           return d && typeof d.title === 'string' && typeof d.image === 'string' && d.image;
         });
-        renderGallery();
-        renderFilters();
+        if (gallery) { renderGallery(); renderFilters(); }
         wireServicePhotos();
       })
       .catch(function () {
-        gallery.textContent = '';
-        gallery.appendChild(el('li', 'gallery-note', 'Fotogrāfijas pašlaik neizdevās ielādēt. Lūdzu, atjaunojiet lapu.'));
+        if (gallery) {
+          gallery.textContent = '';
+          gallery.appendChild(el('li', 'gallery-note', 'Fotogrāfijas pašlaik neizdevās ielādēt. Lūdzu, atjaunojiet lapu.'));
+        }
       });
   }
 
@@ -328,26 +333,19 @@
   /* ---------- mobile call bar ---------- */
 
   var callbar = $('#callbar');
-  var hero = $('.hero');
-  if (callbar && hero && 'IntersectionObserver' in window) {
-    var heroVisible = true;
-    var endVisible = new Set();
+  var footer = $('.site-footer');
+  if (callbar && footer && 'IntersectionObserver' in window) {
+    var footerVisible = false;
     var updateBar = function () {
-      callbar.classList.toggle('is-visible', !heroVisible && endVisible.size === 0);
+      callbar.classList.toggle('is-visible', window.scrollY > 200 && !footerVisible);
     };
     new IntersectionObserver(function (entries) {
-      heroVisible = entries[0].isIntersecting;
+      footerVisible = entries[0].isIntersecting;
       updateBar();
-    }, { rootMargin: '0px 0px -35% 0px' }).observe(hero);
+    }, { rootMargin: '0px 0px -10% 0px' }).observe(footer);
 
-    var endObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) endVisible.add(entry.target);
-        else endVisible.delete(entry.target);
-      });
-      updateBar();
-    });
-    $$('#kontakti, .site-footer').forEach(function (node) { endObserver.observe(node); });
+    window.addEventListener('scroll', updateBar, { passive: true });
+    updateBar();
   }
 
   /* ---------- enquiry form → e-mail ---------- */
