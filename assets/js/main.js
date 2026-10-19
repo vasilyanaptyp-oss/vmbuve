@@ -3,6 +3,7 @@
   'use strict';
 
   var DATA_URL = 'darbi.json';
+  var UPLOADS_URL = 'uploads.json'; // photos added on pievienot.html, shown first in the gallery
   var IMG_DIR = 'assets/img/darbi/';
   var EMAIL = 'vmbuve@inbox.lv';
 
@@ -55,9 +56,34 @@
 
   // "image" is a file name stem: <stem>-960.webp and <stem>-1600.webp are used.
   // A name with an extension (e.g. "foto.jpg") is used as is.
-  function imageSrc(image, size) {
+  // Uploaded photos carry their own path in "src" (one size, max 1600 px).
+  function imageSrc(item, size) {
+    if (item.src) return item.src;
+    var image = item.image;
     if (/\.[a-z0-9]{3,4}$/i.test(image)) return IMG_DIR + image;
     return IMG_DIR + image + '-' + size + '.webp';
+  }
+
+  // uploads.json: [{ src, caption, date, category? }], appended by the upload Worker (oldest first).
+  function uploadedItems(data) {
+    var list = (Array.isArray(data) ? data : []).filter(function (d) {
+      return d && typeof d.src === 'string' &&
+        /^[a-z0-9][a-z0-9\/._-]*\.(webp|jpe?g|png)$/i.test(d.src) && d.src.indexOf('..') === -1;
+    }).map(function (d, i) {
+      return {
+        src: d.src,
+        title: typeof d.caption === 'string' ? d.caption : '',
+        category: typeof d.category === 'string' ? d.category : '',
+        date: typeof d.date === 'string' ? d.date : '',
+        order: i
+      };
+    });
+    // newest first: by date, then the later upload of the same day first
+    list.sort(function (a, b) {
+      if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+      return b.order - a.order;
+    });
+    return list;
   }
 
   function el(tag, className, text) {
@@ -90,7 +116,7 @@
       btn.setAttribute('aria-haspopup', 'dialog');
 
       var img = document.createElement('img');
-      img.src = imageSrc(item.image, 960);
+      img.src = imageSrc(item, 960);
       img.alt = '';
       img.loading = 'lazy';
       img.decoding = 'async';
@@ -101,14 +127,14 @@
 
       var meta = el('span', 'tile-meta');
       if (item.category) meta.appendChild(el('span', 'tile-cat', item.category));
-      meta.appendChild(el('span', 'tile-title', item.title));
+      if (item.title) meta.appendChild(el('span', 'tile-title', item.title));
 
       var zoom = el('span', 'tile-zoom');
       zoom.appendChild(svgIcon('i-expand'));
 
       btn.appendChild(img);
       btn.appendChild(zoom);
-      btn.appendChild(meta);
+      if (item.title || item.category) btn.appendChild(meta);
       li.appendChild(btn);
       frag.appendChild(li);
     });
@@ -185,15 +211,26 @@
   }
 
   if (needsDarbiData) {
+    // A missing or broken uploads.json never breaks the gallery: it just adds nothing.
+    var uploadsReq = gallery
+      ? fetch(UPLOADS_URL, { cache: 'no-cache' })
+        .then(function (res) { return res.ok ? res.json() : []; })
+        .catch(function () { return []; })
+      : Promise.resolve([]);
+
     fetch(DATA_URL, { cache: 'no-cache' })
       .then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
       .then(function (data) {
-        items = (Array.isArray(data) ? data : []).filter(function (d) {
+        return uploadsReq.then(function (uploads) { return [data, uploads]; });
+      })
+      .then(function (both) {
+        var data = both[0];
+        items = uploadedItems(both[1]).concat((Array.isArray(data) ? data : []).filter(function (d) {
           return d && typeof d.title === 'string' && typeof d.image === 'string' && d.image;
-        });
+        }));
         if (gallery) { renderGallery(); renderFilters(); }
         wireServicePhotos();
       })
@@ -233,7 +270,7 @@
       fresh = true;
     }
     var token = ++lbToken;
-    var src = imageSrc(item.image, 1600);
+    var src = imageSrc(item, 1600);
     var many = lbList.length > 1;
     lbCount.textContent = many ? (lbPos + 1) + ' / ' + lbList.length : '';
     lbPrev.hidden = !many;
@@ -265,7 +302,7 @@
     if (many) {
       [lbPos - 1, lbPos + 1].forEach(function (p) {
         var near = items[lbList[(p + lbList.length) % lbList.length]];
-        if (near) (new Image()).src = imageSrc(near.image, 1600);
+        if (near) (new Image()).src = imageSrc(near, 1600);
       });
     }
   }
