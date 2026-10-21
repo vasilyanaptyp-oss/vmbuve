@@ -5,7 +5,7 @@
   var DATA_URL = 'darbi.json';
   var UPLOADS_URL = 'uploads.json'; // photos added on pievienot.html, shown first in the gallery
   var IMG_DIR = 'assets/img/darbi/';
-  var EMAIL = 'vmbuve@inbox.lv';
+  var EMAIL = 'vmbuve@vmbuve.lv';
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
